@@ -23,10 +23,9 @@
 
     <q-dialog v-model="visiblePlaylist" persistent>
       <q-card class="playlist flex column dark-page">
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWrDntpgyzu9"
-                width="300" height="380" frameborder="0" allowtransparency="true"
-                allow="encrypted-media" />
-        <q-btn @click="toggleVisiblePlaylist" label="Voltar para avaliações" />
+        <q-table class="table" :columns="columns" :data="selectedItem.attributes" row-key="id"
+                 flat hide-pagination/>
+        <q-btn color="orange-10" @click="toggleVisiblePlaylist" label="Voltar para avaliações" />
       </q-card>
     </q-dialog>
   </div>
@@ -44,6 +43,23 @@ import ProjectService from 'src/service/ProjectService';
 import ItemRatingService from 'src/service/ItemRatingService';
 import ItemService from 'src/service/ItemService';
 import notify from 'src/helper/notify';
+
+const columns = [
+  {
+    name: 'name',
+    field: 'name',
+    label: 'Atributo',
+    align: 'center',
+    sortable: false,
+  },
+  {
+    name: 'value',
+    field: 'value',
+    label: 'Valor',
+    align: 'center',
+    sortable: false,
+  },
+];
 
 export default {
   name: 'ItemScore',
@@ -65,6 +81,7 @@ export default {
   },
   data() {
     return {
+      columns,
       itemIdx: 0,
       items: [],
       itemsRatings: [],

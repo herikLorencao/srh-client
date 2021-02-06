@@ -46,7 +46,7 @@
           Verificar Senha
         </q-card-section>
         <q-card-section class="password-inputs">
-          <q-input class="input" type="password" dark filled v-model="profileForm.password"
+          <q-input class="input" type="password" outlined v-model="profileForm.password"
                    label="Senha"/>
         </q-card-section>
         <q-card-actions class="flex justify-center btn-actions" align="center">
@@ -126,9 +126,11 @@ export default {
       await this.editUserSubmit();
     },
     toggleVerifyPasswordMenu() {
+      this.loading = false;
       this.verifyPasswordVisible = !this.verifyPasswordVisible;
     },
     toggleChangePasswordMenu() {
+      this.loading = false;
       this.changePasswordVisible = !this.changePasswordVisible;
     },
     clearPassword() {

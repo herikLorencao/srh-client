@@ -26,7 +26,7 @@
       v-else
       indeterminate
       size="150px"
-      color="secondary"
+      color="white"
       class="q-ma-md"
     />
   </q-page>
