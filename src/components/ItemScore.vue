@@ -3,10 +3,8 @@
     <span v-if="pagination && pagination.totalElements" class="rating-progress">
       Itens: {{ itemIdx + 1 }} / {{ pagination.totalElements }}
     </span>
-    <img v-if="selectedItem.attributes.length > 0" class="music-album"
-         :src="selectedItem.attributes[0].value" alt="Capa Álbum">
-    <img v-else class="music-album" src="../assets/icon.png" alt="Capa Álbum">
-    <span class="music-title">{{ selectedItem.name }}</span>
+    <img class="item-photo" src="../assets/icon.png" alt="Foto Item">
+    <span class="item-title">{{ selectedItem.name }}</span>
     <q-rating
       v-if="selectedItem"
       v-model="score"
@@ -17,10 +15,10 @@
       icon-half="star_half"
       color="secondary"
     />
-    <div class="flex justify-around music-actions">
-      <q-btn @click="backward" icon="fas fa-backward"/>
+    <div class="flex justify-around item-actions">
+      <q-btn @click="backward" icon="fas fa-arrow-left"/>
       <q-btn @click="toggleVisiblePlaylist" icon="fas fa-question"/>
-      <q-btn @click="forward" :class="forwardClass" icon="fas fa-forward"/>
+      <q-btn @click="forward" :class="forwardClass" icon="fas fa-arrow-right"/>
     </div>
 
     <q-dialog v-model="visiblePlaylist" persistent>
@@ -48,7 +46,7 @@ import ItemService from 'src/service/ItemService';
 import notify from 'src/helper/notify';
 
 export default {
-  name: 'MusicScore',
+  name: 'ItemScore',
   computed: {
     selectedItem() {
       if (this.items.length >= 0) {
@@ -59,7 +57,7 @@ export default {
     forwardClass() {
       const itemIdxLength = this.itemIdx + 1;
       if (this.pagination.totalElements === itemIdxLength) {
-        notify('custom-warning', 'Clique no botão de avançar para finalizar a avaliação');
+        notify('custom-warning-2', 'Clique no botão de avançar para finalizar a avaliação');
         return 'forward-finish';
       }
       return '';

@@ -1,6 +1,8 @@
 @import 'quasar.variables';
 @import 'pages/login';
 @import 'pages/user';
+@import 'pages/index';
+@import 'pages/rating';
 
 .footer-text {
   font-size: 1rem;
@@ -21,6 +23,7 @@
 
 .itemmenu-item {
   padding: 0;
+  font-size: 1.05rem;
 
   .icon {
     color: $secondary;

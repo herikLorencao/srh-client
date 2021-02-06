@@ -6,6 +6,12 @@ Notify.registerType('custom-warning', {
   textColor: 'grey-9',
 });
 
+Notify.registerType('custom-warning-2', {
+  icon: 'announcement',
+  color: 'orange-10',
+  textColor: 'grey-1',
+});
+
 function notify(type, message) {
   Notify.create({
     type,
