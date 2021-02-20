@@ -173,12 +173,12 @@ export default {
       // eslint-disable-next-line dot-notation
       if (resp && resp['_embedded'].itens) this.items.push(...resp['_embedded'].itens);
 
-      const addAttributes = this.items.map(async (item) => {
-        item.attributes = await this.loadAttributes(item.id);
-        return item;
-      });
+      // const addAttributes = this.items.map(async (item) => {
+      //   item.attributes = await this.loadAttributes(item.id);
+      //   return item;
+      // });
 
-      this.items = await Promise.all(addAttributes);
+      // this.items = await Promise.all(addAttributes);
       this.loading = false;
     },
   },
